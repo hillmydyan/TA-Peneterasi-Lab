@@ -1,0 +1,20 @@
+{% include "layout/header.html" %}
+
+<h1 class="title">Report Aktivitas Pengujian</h1>
+
+<table class="table">
+    <tr>
+        <th>No</th>
+        <th>Waktu</th>
+        <th>Aktivitas</th>
+    </tr>
+    {% for log in logs %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ log.waktu }}</td>
+        <td>{{ log.aksi }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% include "layout/footer.html" %}

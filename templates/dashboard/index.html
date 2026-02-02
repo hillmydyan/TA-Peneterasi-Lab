@@ -1,0 +1,48 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Dashboard - Virtual Pen Test Lab{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Dashboard Lab Virtual</h1>
+    <p class="page-subtitle">Silakan pilih skenario serangan untuk melakukan simulasi uji penetrasi.</p>
+</div>
+
+<div class="grid-cards">
+    <!-- DDOS Card -->
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">DDOS Attack</h3>
+            <p class="card-text">Simulasi serangan Distributed Denial of Service untuk menguji ketahanan layanan
+                terhadap traffic yang abnormal.</p>
+        </div>
+        <div class="card-footer">
+            <a href="/lab/ddos" class="btn btn-primary btn-full">Mulai Simulasi</a>
+        </div>
+    </div>
+
+    <!-- Sniffing Card -->
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Sniffing</h3>
+            <p class="card-text">Melakukan penyadapan paket jaringan untuk mengamati lalu lintas data dan menganalisis
+                protokol yang tidak aman.</p>
+        </div>
+        <div class="card-footer">
+            <a href="/lab/sniffing" class="btn btn-primary btn-full">Mulai Simulasi</a>
+        </div>
+    </div>
+
+    <!-- DNS Spoofing Card -->
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">DNS Spoofing</h3>
+            <p class="card-text">Menguji serangan pemalsuan DNS untuk mengarahkan pengguna ke alamat palsu dan memahami
+                dampaknya.</p>
+        </div>
+        <div class="card-footer">
+            <a href="/lab/dns-spoofing" class="btn btn-primary btn-full">Mulai Simulasi</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

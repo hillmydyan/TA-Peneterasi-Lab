@@ -1,0 +1,40 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Login - Virtual Pen Test Lab{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h2 class="auth-title">Welcome Back</h2>
+            <p class="auth-subtitle">Masuk untuk mengakses lab virtual Anda</p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="">
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control" placeholder="nama@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" style="margin-top: 1rem;">Sign In</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Belum punya akun? <a href="{{ url_for('auth.register') }}">Daftar sekarang</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
