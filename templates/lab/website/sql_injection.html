@@ -1,0 +1,160 @@
+{% extends "layout/base.html" %}
+
+{% block title %}SQL Injection - Web Penetration Lab{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4">
+    <!-- Header -->
+    <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold mb-2">SQL INJECTION</h1>
+        <p class="text-base-content/70 max-w-3xl mx-auto">
+            Ini mensimulasikan <b>Product Lookup</b> pada aplikasi web. Kamu menguji bagaimana input diproses oleh
+            server pada 3
+            level difficulty. (Lab ini dibuat aman untuk edukasi: query tetap memakai parameter binding.)
+        </p>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- COLUMN 1: ATTACK SURFACE -->
+        <div class="card bg-base-100 shadow-xl border border-base-200 h-fit">
+            <div class="card-body">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="card-title text-base-content/80 uppercase tracking-widest text-sm">ATTACK SURFACE</h2>
+                    <div class="badge badge-primary font-bold">{{ difficulty|upper }}</div>
+                </div>
+
+                <div class="grid grid-cols-[100px_1fr] gap-4 text-sm font-mono mb-6">
+                    <div class="font-bold opacity-70 self-center">Endpoint</div>
+                    <div><kbd class="kbd kbd-sm font-sans">/lab/website/sql-injection</kbd></div>
+
+                    <div class="font-bold opacity-70 self-center">Method</div>
+                    <div><span class="badge badge-neutral">POST</span></div>
+
+                    <div class="font-bold opacity-70 self-center">Parameter</div>
+                    <div><code class="bg-base-200 px-1 rounded">product_id</code></div>
+
+                    <div class="font-bold opacity-70 self-center">Data</div>
+                    <div class="text-xs opacity-70">products(id, name, category)</div>
+                </div>
+
+                <div class="divider my-2"></div>
+
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="font-bold text-sm">DIFFICULTY</span>
+                    <form action="" method="GET" class="join">
+                        <select name="difficulty" class="select select-bordered select-sm join-item focus:outline-none">
+                            <option value="easy" {% if difficulty=='easy' %}selected{% endif %}>Easy</option>
+                            <option value="medium" {% if difficulty=='medium' %}selected{% endif %}>Medium</option>
+                            <option value="hard" {% if difficulty=='hard' %}selected{% endif %}>Hard</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-sm join-item">Apply</button>
+                    </form>
+                </div>
+
+                <div class="bg-base-200 rounded p-4 text-xs space-y-2 opacity-80">
+                    <p class="font-bold mb-1">Behavior per level:</p>
+                    <p>• <b>Easy:</b> pesan error lebih "jelas", query preview raw ditampilkan.</p>
+                    <p>• <b>Medium:</b> validasi angka + normalisasi input, query preview lebih rapih.</p>
+                    <p>• <b>Hard:</b> error lebih umum, query preview parameterized.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUMN 2: EXECUTE REQUEST -->
+        <div class="card bg-base-100 shadow-xl border border-base-200 h-fit">
+            <div class="card-body">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="card-title text-base-content/80 uppercase tracking-widest text-sm">EXECUTE REQUEST</h2>
+                    <span class="badge badge-error badge-outline font-poppins text-xs font-bold">VULNERABLE-LIKE</span>
+                </div>
+
+                <form method="POST" class="form-control w-full mb-4">
+                    <label class="label pt-0"><span
+                            class="label-text font-bold text-xs uppercase">PRODUCT_ID</span></label>
+                    <div class="join w-full">
+                        <input id="product-input" type="text" name="product_id" placeholder="e.g. 1"
+                            value="{{ product_id }}" class="input input-bordered join-item w-full font-mono text-sm" />
+                        <button type="submit" class="btn btn-primary join-item px-6">Send</button>
+                    </div>
+                </form>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <button type="button" onclick="document.getElementById('product-input').value='1'"
+                        class="btn btn-sm btn-outline btn-info rounded-full gap-2 hover:scale-105 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                            <path
+                                d="M10 2a.75.75 0 01.75.75v12.59l1.95-2.1a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 111.1-1.02l1.95 2.1V2.75A.75.75 0 0110 2z" />
+                        </svg>
+                        Fill 1
+                    </button>
+                    <button type="button" onclick="document.getElementById('product-input').value='1 OR 1=1'"
+                        class="btn btn-sm btn-outline btn-error rounded-full gap-2 hover:scale-105 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Fill Attack
+                    </button>
+                    <button type="submit" formaction="{{ url_for('website.reset_data') }}" formmethod="POST"
+                        class="btn btn-sm btn-ghost text-base-content/50 hover:text-error ml-auto">
+                        Reset Data
+                    </button>
+                </div>
+
+                <div class="divider text-xs opacity-50 my-1">Server Response</div>
+
+                <!-- Response Area -->
+                <div
+                    class="bg-neutral text-neutral-content rounded-lg p-4 min-h-[120px] mb-4 text-sm font-mono overflow-auto max-h-[400px]">
+                    {% if error %}
+                    <div class="text-error font-bold mb-2">Error: {{ error }}</div>
+                    {% endif %}
+
+                    {% if shown_query %}
+                    <div class="opacity-50 text-xs mb-2 border-b border-white/10 pb-2">
+                        > Query: {{ shown_query }}
+                    </div>
+                    {% endif %}
+
+                    {% if result %}
+                    <table class="table table-xs w-full text-neutral-content">
+                        <thead>
+                            <tr class="text-neutral-content/50 border-b border-white/10">
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>CATEGORY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in result %}
+                            <tr class="border-b border-white/5 last:border-0 hover:bg-white/5">
+                                <td class="font-bold text-info">{{ row['id'] }}</td>
+                                <td>{{ row['name'] }}</td>
+                                <td>{{ row['category'] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% elif not error %}
+                    <div class="opacity-30 italic">Waiting for request...</div>
+                    {% endif %}
+                </div>
+
+                <div class="flex justify-end">
+                    <a href="{{ url_for('website.xss_simulation') }}" class="btn btn-outline btn-sm gap-2">
+                        Next: XSS Lab
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5l6 6m0 0l-6 6m6-6H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

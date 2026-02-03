@@ -25,6 +25,9 @@ app.register_blueprint(report)
 app.register_blueprint(auth)
 app.register_blueprint(forensic_bp)
 
+from controllers.website_controller import website_bp
+app.register_blueprint(website_bp)
+
 # Buat Database jika belum ada
 with app.app_context():
     db.create_all()

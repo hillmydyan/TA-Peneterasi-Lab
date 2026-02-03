@@ -46,8 +46,21 @@
                 </summary>
                 <ul>
                     <li>
-                        <a href="#" class="disabled opacity-50 cursor-not-allowed">
+                        <a href="{{ url_for('website.index') }}"
+                            class="{% if '/lab/website' == request.path %}active{% endif %}">
+                            Overview
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('website.sql_injection') }}"
+                            class="{% if 'sql-injection' in request.path %}active{% endif %}">
                             SQL Injection
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('website.xss_simulation') }}"
+                            class="{% if 'xss' in request.path %}active{% endif %}">
+                            XSS (Cross-Site Scripting)
                         </a>
                     </li>
                 </ul>

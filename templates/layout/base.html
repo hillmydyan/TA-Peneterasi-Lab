@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div class="drawer lg:drawer-open">
+    <div class="drawer">
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col">
             <!-- Navbar -->
@@ -30,7 +30,6 @@
             <!-- Page Content -->
             <div class="p-6">
                 <!-- Mobile Sidebar Toggle -->
-                <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden mb-4">Open Menu</label>
                 {% block content %}{% endblock %}
             </div>
 
