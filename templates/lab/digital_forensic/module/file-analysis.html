@@ -1,0 +1,147 @@
+{% extends "layout/base.html" %}
+
+{% block title %}File Analysis | DFLab{% endblock %}
+
+{% block content %}
+<div class="hero bg-base-200 rounded-box mb-8">
+    <div class="hero-content text-center py-10">
+        <div class="max-w-md">
+            <h1 class="text-3xl font-bold text-primary">File Analysis</h1>
+            <p class="py-4 text-base-content/80">Apa itu File Analysis?</p>
+        </div>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 max-w-4xl pb-12">
+    <div class="card bg-base-100 shadow-xl border border-base-200">
+        <div class="card-body">
+            <!-- Introduction -->
+            <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
+                <div class="w-full md:w-1/4 flex justify-center">
+                    <div class="p-4 bg-primary/10 rounded-full text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="w-full md:w-3/4">
+                    <h2 class="card-title text-2xl mb-4">Introduction</h2>
+                    <p class="text-base-content/80 text-justify leading-relaxed">
+                        File analysis atau analisis file merupakan tahap awal yang krusial dalam Digital Forensic.
+                        Analisis file merupakan proses pemeriksaan file digital untuk mengidentifikasi struktur,
+                        konten, dan artefak yang relevan dalam investigasi forensik digital.
+                    </p>
+                </div>
+            </div>
+
+            <p class="mb-6 text-base-content/80">
+                Artefak dalam Digital Forensic adalah <q class="italic font-semibold">sisa jejak, data, atau informasi
+                    digital</q> yang tertinggal
+                dari aktivitas pengguna pada sistem atau perangkat digital.
+            </p>
+
+            <h3 class="text-xl font-bold mb-4">Lesson Overview</h3>
+            <ul class="list-disc pl-6 mb-8 text-base-content/80">
+                <li>File memiliki struktur internal (header, body, footer)</li>
+                <li>Ekstensi file tidak selalu mencerminkan format sebenarnya</li>
+                <li>File dapat dimodifikasi atau dimanipulasi</li>
+                <li>File analysis menjadi dasar analisis forensik lanjutan</li>
+            </ul>
+
+            <h3 class="text-xl font-bold mb-4">Practice Scenario</h3>
+            <div class="space-y-4 mb-8">
+
+                <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                    <input type="checkbox" checked />
+                    <div class="collapse-title text-lg font-medium">Langkah 1 - Pemilihan Bukti</div>
+                    <div class="collapse-content">
+                        <p class="mb-2">Periksa bukti digital dalam directory <code>evidence</code>.</p>
+                        <div class="mockup-code bg-neutral text-neutral-content p-4">
+                            <pre><code>cd evidence/file_analysis
+ls -lah</code></pre>
+                        </div>
+                        <p class="text-xs text-base-content/70 mt-2">
+                            <code>ls -lah</code>: Menampilkan detail file (permission, owner, size, timestamp).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                    <input type="checkbox" />
+                    <div class="collapse-title text-lg font-medium">Langkah 2 - Verifikasi Tipe Asli File</div>
+                    <div class="collapse-content">
+                        <p class="mb-2">Identifikasi apakah ekstensi file sama dengan tipe asli nya.</p>
+                        <div class="mockup-code bg-neutral text-neutral-content p-4">
+                            <pre><code>file *</code></pre>
+                        </div>
+                        <p class="text-xs text-base-content/70 mt-2">
+                            Mengidentifikasi tipe file sebenarnya berdasarkan signature (magic bytes).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                    <input type="checkbox" />
+                    <div class="collapse-title text-lg font-medium">Langkah 3 - Analisis Metadata & Timestamp</div>
+                    <div class="collapse-content">
+                        <p class="mb-2">Analisis metadata file.</p>
+                        <div class="mockup-code bg-neutral text-neutral-content p-4">
+                            <pre><code>stat {nama_file}
+exiftool {nama_file}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                    <input type="checkbox" />
+                    <div class="collapse-title text-lg font-medium">Langkah 4 - File Header Inspection</div>
+                    <div class="collapse-content">
+                        <p class="mb-2">Konfirmasi keaslian dari file bukti digital.</p>
+                        <div class="mockup-code bg-neutral text-neutral-content p-4">
+                            <pre><code>xxd {nama_file} | head -n 20</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+                    <input type="checkbox" />
+                    <div class="collapse-title text-lg font-medium">Langkah 5 - Temukan Data Tersembunyi</div>
+                    <div class="collapse-content">
+                        <p class="mb-2">Identifikasi file tersembunyi.</p>
+                        <div class="mockup-code bg-neutral text-neutral-content p-4">
+                            <pre><code>binwalk {nama_file}
+binwalk -e {nama_file}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-6 border-t border-base-200">
+                <a href="{{ url_for('forensic.index') }}" class="btn btn-outline w-full gap-2 order-2 sm:order-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Back to Modules
+                </a>
+                <div class="grid grid-cols-2 gap-2 order-1 sm:order-2">
+                    <a href="{{ url_for('forensic.practice') }}" class="btn btn-outline btn-primary w-full">Practice</a>
+                    <a href="{{ url_for('forensic.network_forensic') }}" class="btn btn-primary w-full gap-2">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

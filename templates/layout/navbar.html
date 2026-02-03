@@ -1,0 +1,28 @@
+<div class="navbar bg-base-100 shadow-sm border-b border-base-200">
+    <div class="flex-1">
+        <a class="btn btn-ghost text-xl normal-case">Virtual Penetration Testing Lab</a>
+    </div>
+    <div class="flex-none gap-2">
+        <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost btn-circle avatar placeholder">
+                <div class="bg-neutral text-neutral-content rounded-full w-12">
+                    <span class="text-2xl">{{ current_user.username[0] | upper if current_user.is_authenticated else 'U'
+                        }}</span>
+                </div>
+            </label>
+            <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                {% if current_user.is_authenticated %}
+                <li>
+                    <a href="{{ url_for('auth.profile') }}" class="justify-between">
+                        Profile
+                        <span class="badge">New</span>
+                    </a>
+                </li>
+                <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

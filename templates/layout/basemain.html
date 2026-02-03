@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="cupcake">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
@@ -21,26 +21,20 @@
 </head>
 
 <body>
-    <div class="drawer lg:drawer-open">
-        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content flex flex-col">
+    <div class="app-wrapper">
+        <!-- Main Content -->
+        <main class="main-content no-sidebar {% block main_class %}{% endblock %}">
             <!-- Navbar -->
             {% include 'layout/navbar.html' %}
 
             <!-- Page Content -->
-            <div class="p-6">
-                <!-- Mobile Sidebar Toggle -->
-                <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden mb-4">Open Menu</label>
+            <div class="content-wrapper">
                 {% block content %}{% endblock %}
             </div>
 
             <!-- Footer -->
             {% include 'layout/footer.html' %}
-        </div>
-        <!-- Sidebar -->
-        {% block sidebar %}
-        {% include 'layout/sidebar.html' %}
-        {% endblock %}
+        </main>
     </div>
 
     <!-- Scripts -->

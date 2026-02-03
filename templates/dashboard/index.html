@@ -1,47 +1,88 @@
 {% extends "layout/base.html" %}
 
-{% block title %}Dashboard - Virtual Pen Test Lab{% endblock %}
+{% block title %}Main Menu - Virtual Pen Test Lab{% endblock %}
 
 {% block content %}
-<div class="page-header">
-    <h1 class="page-title">Dashboard Lab Virtual</h1>
-    <p class="page-subtitle">Silakan pilih skenario serangan untuk melakukan simulasi uji penetrasi.</p>
+<div class="hero min-h-[40vh] bg-base-200 rounded-box mb-8">
+    <div class="hero-content text-center">
+        <div class="max-w-md">
+            <h1 class="text-5xl font-bold text-primary">Main Menu</h1>
+            <p class="py-6 text-xl">Pilih kategori simulasi yang ingin Anda jalankan untuk menguji keamanan sistem.</p>
+        </div>
+    </div>
 </div>
 
-<div class="grid-cards">
-    <!-- DDOS Card -->
-    <div class="card">
-        <div class="card-body">
-            <h3 class="card-title">DDOS Attack</h3>
-            <p class="card-text">Simulasi serangan Distributed Denial of Service untuk menguji ketahanan layanan
-                terhadap traffic yang abnormal.</p>
+<div class="container mx-auto px-4 pb-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Web Penetration Card -->
+        <div
+            class="card bg-base-100 shadow-xl border border-base-200 hover:-translate-y-1 transition-transform duration-300">
+            <div class="card-body items-center text-center">
+                <div class="p-4 bg-primary/10 rounded-full mb-4 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                </div>
+                <h2 class="card-title mb-2">Penetrasi Website</h2>
+                <p class="mb-4 text-base-content/70">Simulasi serangan terhadap aplikasi berbasis web untuk menemukan
+                    kerentanan
+                    keamanan seperti SQL Injection dan XSS.</p>
+                <div class="card-actions w-full mt-auto">
+                    <button class="btn btn-disabled w-full">Segera Hadir</button>
+                </div>
+            </div>
         </div>
-        <div class="card-footer">
-            <a href="/lab/ddos" class="btn btn-primary btn-full">Mulai Simulasi</a>
-        </div>
-    </div>
 
-    <!-- Sniffing Card -->
-    <div class="card">
-        <div class="card-body">
-            <h3 class="card-title">Sniffing</h3>
-            <p class="card-text">Melakukan penyadapan paket jaringan untuk mengamati lalu lintas data dan menganalisis
-                protokol yang tidak aman.</p>
+        <!-- Network Penetration Card -->
+        <div
+            class="card bg-base-100 shadow-xl border border-base-200 hover:-translate-y-1 transition-transform duration-300">
+            <div class="card-body items-center text-center">
+                <div class="p-4 bg-primary/10 rounded-full mb-4 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                    </svg>
+                </div>
+                <h2 class="card-title mb-2">Penetrasi Jaringan</h2>
+                <p class="mb-4 text-base-content/70">Uji keamanan infrastruktur jaringan dengan simulasi serangan DDoS,
+                    Sniffing, dan
+                    manipulasi paket data.</p>
+                <div class="card-actions w-full mt-auto">
+                    <a href="/lab/network" class="btn btn-primary w-full">Masuk ke Lab</a>
+                </div>
+            </div>
         </div>
-        <div class="card-footer">
-            <a href="/lab/sniffing" class="btn btn-primary btn-full">Mulai Simulasi</a>
-        </div>
-    </div>
 
-    <!-- DNS Spoofing Card -->
-    <div class="card">
-        <div class="card-body">
-            <h3 class="card-title">DNS Spoofing</h3>
-            <p class="card-text">Menguji serangan pemalsuan DNS untuk mengarahkan pengguna ke alamat palsu dan memahami
-                dampaknya.</p>
-        </div>
-        <div class="card-footer">
-            <a href="/lab/dns-spoofing" class="btn btn-primary btn-full">Mulai Simulasi</a>
+        <!-- Digital Forensic Card -->
+        <div
+            class="card bg-base-100 shadow-xl border border-base-200 hover:-translate-y-1 transition-transform duration-300">
+            <div class="card-body items-center text-center">
+                <div class="p-4 bg-primary/10 rounded-full mb-4 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <h2 class="card-title mb-2">Digital Forensic</h2>
+                <p class="mb-4 text-base-content/70">Analisis bukti digital untuk investigasi insiden keamanan dan
+                    pemulihan data pasca
+                    serangan.</p>
+                <div class="card-actions w-full mt-auto">
+                    <a href="{{ url_for('forensic.index') }}" class="btn btn-primary w-full">Masuk ke Lab</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

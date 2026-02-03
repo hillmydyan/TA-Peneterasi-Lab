@@ -1,0 +1,43 @@
+{% extends "layout/base.html" %}
+
+{% block title %}User Profile - Virtual Pen Test Lab{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">User Profile</h1>
+
+        <div class="card bg-base-100 shadow-xl border border-base-200">
+            <div class="card-body">
+                <div class="flex items-center gap-6 mb-8">
+                    <div class="avatar placeholder">
+                        <div class="bg-neutral text-neutral-content rounded-full w-24">
+                            <span class="text-3xl">{{ current_user.username[0] | upper }}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold">{{ current_user.username }}</h2>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="grid gap-6">
+                    <div>
+                        <label class="label text-sm font-medium opacity-70">Email Address</label>
+                        <div class="text-lg">{{ current_user.email }}</div>
+                    </div>
+                    <div>
+                        <label class="label text-sm font-medium opacity-70">Account Status</label>
+                        <div class="badge badge-success">Active</div>
+                    </div>
+                </div>
+
+                <div class="card-actions justify-end mt-8">
+                    <a href="{{ url_for('dashboard.index') }}" class="btn btn-outline">Back to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

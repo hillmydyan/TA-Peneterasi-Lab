@@ -7,6 +7,7 @@ from controllers.dashboard_controller import dashboard
 from controllers.lab_controller import lab
 from controllers.report_controller import report
 from controllers.auth_controller import auth
+from controllers.forensic_controller import forensic_bp
 
 # Inisialisasi Flask
 app = Flask(__name__)
@@ -22,6 +23,7 @@ app.register_blueprint(dashboard)
 app.register_blueprint(lab)
 app.register_blueprint(report)
 app.register_blueprint(auth)
+app.register_blueprint(forensic_bp)
 
 # Buat Database jika belum ada
 with app.app_context():

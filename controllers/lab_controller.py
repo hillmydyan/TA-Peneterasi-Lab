@@ -16,6 +16,27 @@ def simpan_log(aksi):
         f.write(f"{waktu} - {aksi}\n")
 
 # =========================
+# LAB DASHBOARDS
+# =========================
+@lab.route("/lab/network")
+@login_required
+def network_dashboard():
+    simpan_log("Akses Dashboard Network Pentest")
+    return render_template("lab/network/main.html")
+
+@lab.route("/lab/web")
+@login_required
+def web_dashboard():
+    simpan_log("Akses Dashboard Web Pentest")
+    return render_template("lab/website/main.html")
+
+@lab.route("/lab/forensic")
+@login_required
+def forensic_dashboard():
+    simpan_log("Akses Dashboard Digital Forensic")
+    return render_template("lab/digital_forensic/main.html")
+
+# =========================
 # LAB DDOS
 # =========================
 @lab.route("/lab/ddos")
@@ -30,7 +51,7 @@ def ddos_design():
     attacker_url = f"{guac_url}/#/client/{ids.get('attacker', '')}"
     target_url = f"{guac_url}/#/client/{ids.get('target', '')}"
 
-    return render_template("lab/ddos.html", attacker_url=attacker_url, target_url=target_url)
+    return render_template("lab/network/ddos.html", attacker_url=attacker_url, target_url=target_url)
 
 # =========================
 # LAB SNIFFING
@@ -46,7 +67,7 @@ def sniffing_design():
     attacker_url = f"{guac_url}/#/client/{ids.get('attacker', '')}"
     target_url = f"{guac_url}/#/client/{ids.get('target', '')}"
     
-    return render_template("lab/sniffing.html", attacker_url=attacker_url, target_url=target_url)
+    return render_template("lab/network/sniffing.html", attacker_url=attacker_url, target_url=target_url)
 
 # =========================
 # LAB DNS SPOOFING
@@ -62,7 +83,7 @@ def dns_spoofing_design():
     attacker_url = f"{guac_url}/#/client/{ids.get('attacker', '')}"
     target_url = f"{guac_url}/#/client/{ids.get('target', '')}"
     
-    return render_template("lab/dns-spoofing.html", attacker_url=attacker_url, target_url=target_url)
+    return render_template("lab/network/dns-spoofing.html", attacker_url=attacker_url, target_url=target_url)
 
 # =========================
 # VM RESET ENDPOINT

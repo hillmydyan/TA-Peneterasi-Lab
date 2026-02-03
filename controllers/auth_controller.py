@@ -57,3 +57,8 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('auth.login'))
+
+@auth.route("/profile")
+@login_required
+def profile():
+    return render_template('auth/profile.html')

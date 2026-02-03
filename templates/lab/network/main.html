@@ -1,0 +1,77 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Dashboard - Virtual Pen Test Lab{% endblock %}
+
+{% block content %}
+<div class="p-4">
+    <div class="text-center mb-10">
+        <h1 class="text-4xl font-bold text-primary mb-2">Network Penetration Lab</h1>
+        <p class="text-base-content/70">Silakan pilih skenario serangan untuk melakukan simulasi uji penetrasi.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <!-- DDOS Card -->
+        <div
+            class="card bg-base-100 shadow-xl hover:-translate-y-1 transition-transform duration-300 border border-base-200">
+            <div class="card-body items-center text-center">
+                <div class="p-4 bg-primary/10 rounded-full mb-2 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
+                <h2 class="card-title">DDoS Attack</h2>
+                <p class="text-sm text-base-content/70">Simulasi serangan Distributed Denial of Service untuk menguji
+                    ketahanan layanan.</p>
+                <div class="card-actions justify-center mt-4 w-full">
+                    <a href="/lab/ddos" class="btn btn-primary btn-block">Mulai Simulasi</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sniffing Card -->
+        <div
+            class="card bg-base-100 shadow-xl hover:-translate-y-1 transition-transform duration-300 border border-base-200">
+            <div class="card-body items-center text-center">
+                <div class="p-4 bg-primary/10 rounded-full mb-2 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 12h20"></path>
+                        <path d="M16 6v12"></path>
+                        <path d="M8 6v12"></path>
+                    </svg>
+                </div>
+                <h2 class="card-title">Sniffing</h2>
+                <p class="text-sm text-base-content/70">Melakukan penyadapan paket jaringan untuk mengamati traffic dan
+                    analisis protokol.</p>
+                <div class="card-actions justify-center mt-4 w-full">
+                    <a href="/lab/sniffing" class="btn btn-primary btn-block">Mulai Simulasi</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- DNS Spoofing Card -->
+        <div
+            class="card bg-base-100 shadow-xl hover:-translate-y-1 transition-transform duration-300 border border-base-200">
+            <div class="card-body items-center text-center">
+                <div class="p-4 bg-primary/10 rounded-full mb-2 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                </div>
+                <h2 class="card-title">DNS Spoofing</h2>
+                <p class="text-sm text-base-content/70">Menguji keamanan DNS dengan membelokkan traffic pengguna ke
+                    alamat palsu.</p>
+                <div class="card-actions justify-center mt-4 w-full">
+                    <a href="/lab/dns-spoofing" class="btn btn-primary btn-block">Mulai Simulasi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,140 @@
+<div class="drawer-side z-40">
+    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+
+    <ul class="menu p-4 w-50 min-h-full bg-base-200 text-base-content gap-2">
+        <!-- Sidebar Header -->
+        <li class="mb-4">
+            <div class="flex items-center gap-4 px-2">
+                <div class="bg-primary/10 p-2 rounded-lg text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
+                <span class="text-xl font-bold tracking-tight">CyberLab</span>
+            </div>
+        </li>
+
+        <li>
+            <a href="/" class="{% if request.path == '/' %}active{% endif %} font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                Dashboard
+            </a>
+        </li>
+
+        <div class="divider my-0"></div>
+
+        <!-- Web Pentest -->
+        <li>
+            <details>
+                <summary>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                    Web Pentest
+                </summary>
+                <ul>
+                    <li>
+                        <a href="#" class="disabled opacity-50 cursor-not-allowed">
+                            SQL Injection
+                        </a>
+                    </li>
+                </ul>
+            </details>
+        </li>
+
+        <!-- Network Pentest -->
+        <li>
+            <details {% if 'lab/ddos' in request.path or 'lab/sniffing' in request.path or 'lab/dns-spoofing' in
+                request.path %}open{% endif %}>
+                <summary>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                    </svg>
+                    Network Pentest
+                </summary>
+                <ul>
+                    <li>
+                        <a href="/lab/ddos" class="{% if 'ddos' in request.path %}active{% endif %}">
+                            DDoS Attack
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lab/sniffing" class="{% if 'sniffing' in request.path %}active{% endif %}">
+                            Sniffing
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lab/dns-spoofing" class="{% if 'dns-spoofing' in request.path %}active{% endif %}">
+                            DNS Spoofing
+                        </a>
+                    </li>
+                </ul>
+            </details>
+        </li>
+
+        <!-- Digital Forensic -->
+        <li>
+            <details {% if 'forensic' in request.path %}open{% endif %}>
+                <summary>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    Digital Forensic
+                </summary>
+                <ul>
+                    <li>
+                        <a href="{{ url_for('forensic.index') }}"
+                            class="{% if '/lab/forensic' == request.path %}active{% endif %}">
+                            Overview
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('forensic.file_analysis') }}"
+                            class="{% if 'file-analysis' in request.path %}active{% endif %}">
+                            File Analysis
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('forensic.network_forensic') }}"
+                            class="{% if 'network-forensic' in request.path %}active{% endif %}">
+                            Network Forensics
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('forensic.digital_footprint') }}"
+                            class="{% if 'digital-footprint' in request.path %}active{% endif %}">
+                            Digital Footprint
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('forensic.practice') }}"
+                            class="{% if 'practice' in request.path %}active{% endif %}">
+                            Practice
+                        </a>
+                    </li>
+                </ul>
+            </details>
+        </li>
+    </ul>
+</div>

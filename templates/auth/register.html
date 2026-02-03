@@ -2,6 +2,10 @@
 
 {% block title %}Register - Virtual Pen Test Lab{% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth_styles.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="auth-container">
     <div class="auth-card">
