@@ -4,95 +4,175 @@
 
 {% block content %}
 <div class="p-4">
-    <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-        <div>
-            <h1 class="text-3xl font-bold">DDOS Attack Simulation</h1>
-            <p class="text-base-content/70">Simulasi serangan Distributed Denial of Service (DDoS).</p>
+    <div class="mb-8 max-w-5xl mx-auto">
+        <!-- Title area -->
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-3 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            </div>
+            <h1 class="text-3xl font-extrabold tracking-tight">DDoS Attack Simulation</h1>
+        </div>
+
+        <!-- Info & Warning Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Info Card -->
+            <div class="card bg-base-100 border border-base-200 shadow-sm hover:shadow-md transition-all duration-300">
+                <div class="card-body p-6">
+                    <h2 class="card-title text-base flex items-center gap-2 mb-2">
+                        <span class="text-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </span>
+                        Apa itu DDoS?
+                    </h2>
+                    <p class="text-base-content/70 text-sm leading-relaxed">
+                        <strong>Distributed Denial of Service (DDoS)</strong> adalah serangan siber yang membanjiri
+                        target dengan lalu lintas <em>(traffic)</em> internet palsu secara masif. Akibatnya, server
+                        menjadi kewalahan dan lumpuh sehingga tidak dapat diakses pengguna asli.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Warning Card -->
+            <div class="card bg-warning/10 border-l-4 border-l-warning shadow-sm">
+                <div class="card-body p-6">
+                    <h2 class="card-title text-base text-warning-content font-bold flex items-center gap-2 mb-2">
+                        <span class="text-warning">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                        </span>
+                        Aturan & Peringatan Etik
+                    </h2>
+                    <p class="text-warning-content/90 text-sm leading-relaxed">
+                        Segala bentuk simulasi eksploitasi serangan <strong>HANYA</strong> diizinkan di dalam ruang
+                        lingkup lab/web tertutup ini.
+                        <span class="block mt-2 font-semibold text-error">
+                            ❌ Dilarang keras menyasar website publik di internet nyata!
+                        </span>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="flex flex-col lg:flex-row gap-6">
-        <!-- LEFT COLUMN: STEPS -->
-        <aside class="w-full lg:w-1/3">
+    <div class="w-full max-w-5xl mx-auto gap-6">
+        <!-- STEPS -->
+        <main class="w-full">
             <div class="card bg-base-100 shadow-xl">
                 <div class="card-body p-4">
-                    <h3 class="card-title text-lg mb-4">Guide Instructions</h3>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                        <h3 class="card-title text-xl">Guide Instructions</h3>
+                        <a href="/lab/network/practice?module=ddos" class="btn btn-primary btn-sm">Buka Practice
+                            Module</a>
+                    </div>
 
-                    <div class="space-y-4">
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" checked="checked" />
-                            <div class="collapse-title text-xl font-medium">
-                                1. Start Virtual Machine
+                    <div class="alert alert-info shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            class="stroke-current shrink-0 w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-bold">Informasi Login VM</h3>
+                            <div class="text-sm">Jika VM logout atau terkunci, gunakan kredensial berikut:
+                                <b>Username:</b> <code>attacker</code> | <b>Password:</b> <code>admin</code></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8 mt-4">
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">
+                                    1</div>
                             </div>
-                            <div class="collapse-content">
-                                <p>Pada tahap ini silahkan hidupkan virtual machine di panel kanan.</p>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">Start Virtual Machine</h4>
+                                <p class="mt-2 text-base-content/80">Pada tahap ini silahkan hidupkan virtual machine di
+                                    panel kanan.</p>
                             </div>
                         </div>
 
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" />
-                            <div class="collapse-title text-xl font-medium">
-                                2. Identify Target
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">
+                                    2</div>
                             </div>
-                            <div class="collapse-content">
-                                <p>Target yang akan diserang adalah <span class="badge">https.www.asaas.com</span>.</p>
-                            </div>
-                        </div>
-
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" />
-                            <div class="collapse-title text-xl font-medium">
-                                3. Check IP Address
-                            </div>
-                            <div class="collapse-content">
-                                <p>Lakukan pengecekan IP target menggunakan perintah:</p>
-                                <div class="mockup-code bg-base-300 text-base-content mt-2">
-                                    <pre data-prefix="$"
-                                        class="whitespace-pre-wrap break-all"><code>ping website.com</code></pre>
-                                </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">Identify Target</h4>
+                                <p class="mt-2 text-base-content/80">Target yang akan diserang adalah <span
+                                        class="badge badge-outline">http://192.168.56.102/index.php</span>.</p>
                             </div>
                         </div>
 
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" />
-                            <div class="collapse-title text-xl font-medium">
-                                4. Pre-exploitation
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">
+                                    3</div>
                             </div>
-                            <div class="collapse-content">
-                                <p>Gunakan tools <strong>slowhttptest</strong> untuk membanjiri traffic.</p>
-                                <p class="mt-2">Run command:</p>
-                                <div class="mockup-code bg-base-300 text-base-content mt-2 max-w-full overflow-x-auto">
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">Buka Terminal</h4>
+                                <p class="mt-2 text-base-content/80">Silahkan buka terminal di VM Kali Linux Anda.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">
+                                    4</div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">Pre-exploitation</h4>
+                                <p class="mt-2 text-base-content/80">Gunakan tools <strong>slowhttptest</strong> untuk
+                                    membanjiri traffic.</p>
+                                <p class="mt-1 text-base-content/80">Run command:</p>
+                                <div class="mockup-code bg-base-300 text-base-content mt-3 max-w-full overflow-x-auto">
                                     <pre class="whitespace-pre-wrap break-all"
-                                        data-prefix="$"><code>slowhttptest -c 1000 -H -g -o slowhttp -i 10 -r 200 -t GET -u http://192.168.1.202/index.php -x 24 -p 3</code></pre>
+                                        data-prefix="$"><code>slowhttptest -c 1000 -H -g -o slowhttp -i 10 -r 200 -t GET -u (addres/domain) -x 24 -p 3</code></pre>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" />
-                            <div class="collapse-title text-xl font-medium">
-                                5. Tool Explanation
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">
+                                    5</div>
                             </div>
-                            <div class="collapse-content">
-                                <div class="overflow-x-auto">
-                                    <table class="table table-xs">
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">Tool Explanation</h4>
+                                <div class="overflow-x-auto mt-3">
+                                    <table class="table table-zebra w-full max-w-md bg-base-200/50 rounded-lg">
                                         <thead>
                                             <tr>
-                                                <th>Param</th>
-                                                <th>Fungsi</th>
+                                                <th class="bg-base-300">Param</th>
+                                                <th class="bg-base-300">Fungsi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>-c 1000</td>
+                                                <td class="font-mono text-sm">-c 1000</td>
                                                 <td>1000 koneksi</td>
                                             </tr>
                                             <tr>
-                                                <td>-H</td>
+                                                <td class="font-mono text-sm">-H</td>
                                                 <td>Slowloris mode</td>
                                             </tr>
                                             <tr>
-                                                <td>-p 3</td>
+                                                <td class="font-mono text-sm">-p 3</td>
                                                 <td>Durasi 3 menit</td>
                                             </tr>
                                         </tbody>
@@ -101,86 +181,30 @@
                             </div>
                         </div>
 
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" />
-                            <div class="collapse-title text-xl font-medium">
-                                6. Exploitation
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">
+                                    6</div>
                             </div>
-                            <div class="collapse-content">
-                                <p>Jalankan perintah serangan dan amati respon server.</p>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">Exploitation</h4>
+                                <p class="mt-2 text-base-content/80">Jalankan perintah serangan dan amati respon server.
+                                </p>
                             </div>
                         </div>
 
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" />
-                            <div class="collapse-title text-xl font-medium">
-                                7. Analysis
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">
+                                    7</div>
                             </div>
-                            <div class="collapse-content">
-                                <p>Deskripsikan hasil percobaan dan dampaknya pada server.</p>
+                            <div class="flex-1 border-b-0 pb-0">
+                                <h4 class="text-xl font-semibold">Analysis</h4>
+                                <p class="mt-2 text-base-content/80">Deskripsikan hasil percobaan dan dampaknya pada
+                                    server.</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- RIGHT COLUMN: VM PREVIEW -->
-        <main class="w-full lg:w-2/3">
-            <div class="grid grid-cols-1 gap-6">
-                <!-- Attacker Box -->
-                <div class="card bg-base-100 shadow-xl">
-                    <div class="card-body p-4">
-                        <h3 class="card-title text-sm mb-2">Attacker VM (Kali Linux)</h3>
-                        <div id="attacker-vm-container"
-                            class="bg-base-300 h-96 rounded-box flex items-center justify-center relative overflow-hidden">
-                            <div class="text-center text-base-content/50">
-                                <p>VM is ready</p>
-                            </div>
-                        </div>
-                        <div class="card-actions justify-center mt-4">
-                            <button class="btn btn-primary btn-sm"
-                                onclick="startVM('attacker-vm-container', '{{ attacker_url }}', 'ddos', 'attacker')">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                                </svg>
-                                Start VM
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Target Box -->
-                <div class="card bg-base-100 shadow-xl">
-                    <div class="card-body p-4">
-                        <h3 class="card-title text-sm mb-2">Target VM (Server)</h3>
-                        <div id="target-vm-container"
-                            class="bg-base-300 h-96 rounded-box flex items-center justify-center relative overflow-hidden">
-                            <div class="text-center text-base-content/50">
-                                <p>VM is ready</p>
-                            </div>
-                        </div>
-                        <div class="card-actions justify-center mt-4 gap-2">
-                            <button class="btn btn-primary btn-sm"
-                                onclick="startVM('target-vm-container', '{{ target_url }}', 'ddos')">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                                </svg>
-                                Start VM
-                            </button>
-                            <button class="btn btn-warning btn-sm" onclick="resetVM('ddos')">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                                    <path d="M3 3v5h5"></path>
-                                </svg>
-                                Reset VM
-                            </button>
                         </div>
                     </div>
                 </div>

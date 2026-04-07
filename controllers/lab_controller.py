@@ -78,12 +78,40 @@ def dns_spoofing_design():
     simpan_log("Akses LAB DNS Spoofing")
     
     guac_url = Config.GUACAMOLE_URL
-    ids = Config.GUAC_CONNECTIONS.get('dns_spoofing', {})
+    ids = Config.GUAC_CONNECTIONS.get('dns-spoofing', {})
     
     attacker_url = f"{guac_url}/#/client/{ids.get('attacker', '')}"
     target_url = f"{guac_url}/#/client/{ids.get('target', '')}"
     
     return render_template("lab/network/dns-spoofing.html", attacker_url=attacker_url, target_url=target_url)
+
+# =========================
+# NETWORK PRACTICE MODULE
+# =========================
+@lab.route("/lab/network/practice")
+@login_required
+def network_practice():
+    module = request.args.get('module', 'ddos')
+    simpan_log(f"Akses Practice Network: {module}")
+    
+    guac_url = Config.GUACAMOLE_URL
+    ids = Config.GUAC_CONNECTIONS.get(module, {})
+    
+    attacker_url = f"{guac_url}/#/client/{ids.get('attacker', '')}" if ids.get('attacker') else ""
+    target_url = f"{guac_url}/#/client/{ids.get('target', '')}" if ids.get('target') else ""
+    
+    module_titles = {
+        'ddos': 'DDoS Attack',
+        'sniffing': 'Network Sniffing',
+        'dns-spoofing': 'DNS Spoofing'
+    }
+    module_title = module_titles.get(module, 'Unknown Module')
+    
+    return render_template("lab/network/practice.html", 
+                           active_module=module, 
+                           module_title=module_title,
+                           attacker_url=attacker_url, 
+                           target_url=target_url)
 
 # =========================
 # VM RESET ENDPOINT

@@ -4,172 +4,167 @@
 
 {% block content %}
 <div class="p-4">
-    <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-        <div>
-            <h1 class="text-3xl font-bold">DNS Spoofing Simulation</h1>
-            <p class="text-base-content/70">Simulasi serangan DNS Spoofing untuk membelokkan traffic korban.</p>
+    <div class="mb-8 max-w-5xl mx-auto">
+        <!-- Title area -->
+        <div class="flex items-center gap-3 mb-6">
+            <div class="p-3 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+            </div>
+            <h1 class="text-3xl font-extrabold tracking-tight">DNS Spoofing Simulation</h1>
+        </div>
+        
+        <!-- Info & Warning Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Info Card -->
+            <div class="card bg-base-100 border border-base-200 shadow-sm hover:shadow-md transition-all duration-300">
+                <div class="card-body p-6">
+                    <h2 class="card-title text-base flex items-center gap-2 mb-2">
+                        <span class="text-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </span>
+                        Apa itu DNS Spoofing?
+                    </h2>
+                    <p class="text-base-content/70 text-sm leading-relaxed">
+                        📝 <strong>DNS Spoofing</strong> (atau DNS Cache Poisoning) adalah manipulasi informasi <em>Domain Name System</em> untuk mengalihkan lalu lintas korban ke server palsu. Target yang berniat mengakses web asli justru diarahkan ke web jebakan penyerang secara diam-diam.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Warning Card -->
+            <div class="card bg-warning/10 border-l-4 border-l-warning shadow-sm">
+                <div class="card-body p-6">
+                    <h2 class="card-title text-base text-warning-content font-bold flex items-center gap-2 mb-2">
+                        <span class="text-warning">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                        </span>
+                        Aturan & Peringatan Etik
+                    </h2>
+                    <p class="text-warning-content/90 text-sm leading-relaxed">
+                        Segala bentuk simulasi manipulasi lalu lintas jaringan <strong>HANYA</strong> diizinkan di dalam ruang lingkup lab/web tertutup ini.
+                        <span class="block mt-2 font-semibold text-error">
+                            ❌ Dilarang keras membelokkan trafik atau merusak DNS pada jaringan publik!
+                        </span>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="flex flex-col lg:flex-row gap-6">
-        <!-- LEFT COLUMN: STEPS -->
-        <aside class="w-full lg:w-1/3">
+    <div class="w-full max-w-5xl mx-auto gap-6">
+        <!-- STEPS -->
+        <main class="w-full">
             <div class="card bg-base-100 shadow-xl">
                 <div class="card-body p-4">
-                    <h3 class="card-title text-lg mb-4">Guide Instructions</h3>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                        <h3 class="card-title text-xl">Guide Instructions</h3>
+                        <a href="/lab/network/practice?module=dns-spoofing" class="btn btn-primary btn-sm">Buka Practice
+                            Module</a>
+                    </div>
 
-                    <div class="space-y-4">
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" checked="checked" />
-                            <div class="collapse-title text-xl font-medium">
-                                1. Start Virtual Machines
-                            </div>
-                            <div class="collapse-content">
-                                <p>Nyalakan VM Attacker dan Victim. Pastikan keduanya berada dalam satu jaringan
-                                    internal yang sama.</p>
-                            </div>
-                        </div>
-
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" />
-                            <div class="collapse-title text-xl font-medium">
-                                2. Network Check
-                            </div>
-                            <div class="collapse-content">
-                                <p>Cek IP address dan konektivitas (ping):</p>
-                                <div class="mockup-code bg-base-300 text-base-content mt-2">
-                                    <pre data-prefix="$" class="whitespace-pre-wrap break-all"><code>ip a</code></pre>
-                                </div>
-                                <div class="mockup-code bg-base-300 text-base-content mt-2">
-                                    <pre data-prefix="$"
-                                        class="whitespace-pre-wrap break-all"><code>ping &lt;victim_ip&gt;</code></pre>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" />
-                            <div class="collapse-title text-xl font-medium">
-                                3. Enable IP Forwarding
-                            </div>
-                            <div class="collapse-content">
-                                <p>Aktifkan forwarding agar traffic tetap bisa lewat (agar korban tidak curiga putus
-                                    koneksi):</p>
-                                <div class="mockup-code bg-base-300 text-base-content mt-2 max-w-full overflow-x-auto">
-                                    <pre data-prefix="$"
-                                        class="whitespace-pre-wrap break-all"><code>echo 1 > /proc/sys/net/ipv4/ip_forward</code></pre>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" />
-                            <div class="collapse-title text-xl font-medium">
-                                4. ARP Spoofing
-                            </div>
-                            <div class="collapse-content">
-                                <p>Lakukan ARP poisoning (Man-in-the-Middle) dua arah:</p>
-                                <div class="mockup-code bg-base-300 text-base-content mt-2 max-w-full overflow-x-auto">
-                                    <pre class="whitespace-pre-wrap break-all"
-                                        data-prefix="$"><code>arpspoof -i eth0 -t &lt;victim_ip&gt; &lt;gateway_ip&gt;</code></pre>
-                                </div>
-                                <div class="mockup-code bg-base-300 text-base-content mt-2 max-w-full overflow-x-auto">
-                                    <pre class="whitespace-pre-wrap break-all"
-                                        data-prefix="$"><code>arpspoof -i eth0 -t &lt;gateway_ip&gt; &lt;victim_ip&gt;</code></pre>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" />
-                            <div class="collapse-title text-xl font-medium">
-                                5. DNS Spoofing
-                            </div>
-                            <div class="collapse-content">
-                                <p>Buat file <code>dns.txt</code> berisi mapping domain palsu:</p>
-                                <div class="mockup-code bg-base-300 text-base-content mt-2 max-w-full overflow-x-auto">
-                                    <pre data-prefix="$"
-                                        class="whitespace-pre-wrap break-all"><code>echo "facebook.com 192.168.56.100" > dns.txt</code></pre>
-                                </div>
-                                <p class="mt-4">Jalankan dnsspoof:</p>
-                                <div class="mockup-code bg-base-300 text-base-content mt-2 max-w-full overflow-x-auto">
-                                    <pre data-prefix="$"
-                                        class="whitespace-pre-wrap break-all"><code>dnsspoof -i eth0 -f dns.txt</code></pre>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                            <input type="checkbox" />
-                            <div class="collapse-title text-xl font-medium">
-                                6. Verification
-                            </div>
-                            <div class="collapse-content">
-                                <p>Buka browser di Victim VM dan akses <code>facebook.com</code>. Halaman seharusnya
-                                    mengarah ke server attacker (192.168.56.100).</p>
-                            </div>
+                    <div class="alert alert-info shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <div>
+                            <h3 class="font-bold">Informasi Login VM</h3>
+                            <div class="text-sm">Jika VM logout atau terkunci, gunakan kredensial berikut: <b>Username:</b> <code>attacker</code> | <b>Password:</b> <code>admin</code></div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </aside>
 
-        <!-- RIGHT COLUMN: VM PREVIEW -->
-        <main class="w-full lg:w-2/3">
-            <div class="grid grid-cols-1 gap-6">
-                <!-- Attacker Box -->
-                <div class="card bg-base-100 shadow-xl">
-                    <div class="card-body p-4">
-                        <h3 class="card-title text-sm mb-2">Attacker VM (Kali Linux)</h3>
-                        <div id="attacker-vm-container"
-                            class="bg-base-300 h-96 rounded-box flex items-center justify-center relative overflow-hidden">
-                            <div class="text-center text-base-content/50">
-                                <p>VM is ready</p>
+                    <div class="space-y-8 mt-4">
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">1</div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">Start Virtual Machines</h4>
+                                <p class="mt-2 text-base-content/80">Nyalakan VM Attacker dan Victim. Pastikan keduanya berada dalam satu jaringan internal yang sama.</p>
                             </div>
                         </div>
-                        <div class="card-actions justify-center mt-4">
-                            <button class="btn btn-primary btn-sm"
-                                onclick="startVM('attacker-vm-container', '{{ attacker_url }}', 'dns-spoofing', 'attacker')">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                                </svg>
-                                Start VM
-                            </button>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Victim Box -->
-                <div class="card bg-base-100 shadow-xl">
-                    <div class="card-body p-4">
-                        <h3 class="card-title text-sm mb-2">Victim VM (Windows/Linux)</h3>
-                        <div id="target-vm-container"
-                            class="bg-base-300 h-96 rounded-box flex items-center justify-center relative overflow-hidden">
-                            <div class="text-center text-base-content/50">
-                                <p>VM is ready</p>
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">2</div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">Buka Terminal</h4>
+                                <p class="mt-2 text-base-content/80">Silahkan buka terminal di VM Kali Linux Anda.</p>
                             </div>
                         </div>
-                        <div class="card-actions justify-center mt-4 gap-2">
-                            <button class="btn btn-primary btn-sm"
-                                onclick="startVM('target-vm-container', '{{ target_url }}', 'dns-spoofing')">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                                </svg>
-                                Start VM
-                            </button>
-                            <button class="btn btn-warning btn-sm" onclick="resetVM('dns-spoofing')">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                                    <path d="M3 3v5h5"></path>
-                                </svg>
-                                Reset VM
-                            </button>
+
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">3</div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">Network Check</h4>
+                                <p class="mt-2 text-base-content/80">Cek uji konektivitas ke Target/Victim. IP Target yang akan disimulasikan adalah <code>192.168.56.104</code>.</p>
+                                <div class="mockup-code bg-base-300 text-base-content mt-3">
+                                    <pre data-prefix="$" class="whitespace-pre-wrap break-all"><code>ping 192.168.56.104</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">4</div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">Konfigurasi DNS Ettercap</h4>
+                                <p class="mt-2 text-base-content/80">Sebelum memulai serangan berbasis GUI, edit konfigurasi bawaan DNS Ettercap untuk menambahkan pemetaan domain tujuan palsu ke alamat server Attacker (<code>192.168.56.102</code>):</p>
+                                <div class="mockup-code bg-base-300 text-base-content mt-3 text-sm">
+                                    <pre data-prefix="$" class="whitespace-pre-wrap break-all text-info"><code class="text-info"># Buka file konfigurasi via Nano Editor:</code></pre>
+                                    <pre data-prefix="$" class="whitespace-pre-wrap break-all mb-2"><code>sudo nano /etc/ettercap/etter.dns</code></pre>
+                                    <pre data-prefix=">" class="whitespace-pre-wrap break-all text-success"><code class="text-success"># Tambahkan A Record ini di bagian paling bawah:</code></pre>
+                                    <pre data-prefix=">" class="whitespace-pre-wrap break-all"><code>belajarit.test A 192.168.56.102</code></pre>
+                                </div>
+                                <p class="mt-2 text-xs text-base-content/60">Simpan perubahan dan tutup file (tekan <code>Ctrl+X</code>, <code>Y</code>, lalu <code>Enter</code> pada terminal).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">5</div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">ARP Spoofing (Ettercap GUI)</h4>
+                                <p class="mt-2 text-base-content/80">Jalankan <strong>Ettercap</strong> dalam mode grafis (GUI) menggunakan perintah: <code>sudo ettercap -G</code></p>
+                                <div class="bg-base-200/50 p-4 rounded-lg mt-3 text-sm border border-base-300">
+                                    <p class="font-semibold mb-2">Persiapan posisi Man-in-the-Middle:</p>
+                                    <ol class="list-decimal list-outside ml-4 space-y-2 text-base-content/80">
+                                        <li>Pilih <strong>Primary Interface</strong> (misal: <code>eth0</code>), lalu klik tombol <strong>Centang (✓ Accept)</strong>.</li>
+                                        <li>Klik ikon <strong>Search (🔍)</strong> atau buka menu <strong>Hosts</strong> &gt; <strong>Scan for hosts</strong>.</li>
+                                        <li>Buka <strong>Hosts list</strong>: pilih IP Gateway <code>192.168.56.111</code> lalu terapkan sebagai <strong>Target 1</strong>. Kemudian, pilih IP Victim <code>192.168.56.104</code> lalu terapkan sebagai <strong>Target 2</strong>.</li>
+                                        <li>Pilih menu <strong>MITM</strong> &gt; klik <strong>ARP poisoning...</strong>, centang parameter <em>"Sniff remote connections"</em>, lalu tekan <strong>OK</strong>.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">6</div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-semibold">Aktivasi Plugin DNS Spoof</h4>
+                                <p class="mt-2 text-base-content/80">Kini perangkat Anda sudah merepresentasikan saluran penghubung antara Victim dan dunia luar. Lakukan intersep pada permintaan web (DNS):</p>
+                                <div class="bg-base-200/50 p-4 rounded-lg mt-3 text-sm border border-base-300">
+                                    <ul class="list-disc list-inside space-y-2 text-base-content/80">
+                                        <li>Buka menu dropdown di atas aplikasi: <strong>Plugins</strong> &gt; <strong>Manage plugins</strong>.</li>
+                                        <li>Cari plugin yang bernama <code>dns_spoof</code> dalam daftar.</li>
+                                        <li>Klik dua kali (<em>double-click</em>) pada tulisan <code>dns_spoof</code> tersebut hingga muncul simbol tanda bintang (<strong>*</strong>) di sebelah sisinya.</li>
+                                        <li>Kini setiap kali Target menavigasi ke domain <em>belajarit.test</em>, Ettercap akan membengkokkannya secara rahasia.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="flex-none">
+                                <div class="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">7</div>
+                            </div>
+                            <div class="flex-1 border-b-0 pb-0">
+                                <h4 class="text-xl font-semibold">Verification</h4>
+                                <p class="mt-2 text-base-content/80">Buka web browser di VM Victim dan kunjungi <code>http://belajarit.test</code>. Meskipun Anda mengetikkan domain asli, halaman yang terbuka adalah halaman server lokal milik Attacker (<code>192.168.56.102</code>) akibat manipulasi DNS.</p>
+                            </div>
                         </div>
                     </div>
                 </div>

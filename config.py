@@ -15,6 +15,14 @@ class Config:
             'attacker': 'MgBjAHBvc3RncmVzcWw=', 
             'target': 'NQBjAHBvc3RncmVzcWw='
         },
+        'sniffing': {
+            'attacker': 'MgBjAHBvc3RncmVzcWw=', 
+            'target': 'NQBjAHBvc3RncmVzcWw='
+        },
+        'dns-spoofing': {
+            'attacker': 'MgBjAHBvc3RncmVzcWw=', 
+            'target': 'NQBjAHBvc3RncmVzcWw='
+        }
     }
 
     # Konfigurasi Path VBoxManage
@@ -31,11 +39,11 @@ class Config:
             'attacker': {'vm_name': 'vm-attaker', 'snapshot': 'clean-attacker'}
         },
         'sniffing': {
-            'target': {'vm_name': 'target1', 'snapshot': 'Clean-State'},
+            'target': {'vm_name': 'target2', 'snapshot': 'clean-target2'},
             'attacker': {'vm_name': 'vm-attaker', 'snapshot': 'clean-attacker'}
         },
         'dns-spoofing': {  # Perhatikan: key harus match dengan lab_name di controller
-            'target': {'vm_name': 'target3', 'snapshot': 'Clean-State'},
+            'target': {'vm_name': 'target2', 'snapshot': 'clean-target2'},
             'attacker': {'vm_name': 'vm-attaker', 'snapshot': 'clean-attacker'}
         }
     }
